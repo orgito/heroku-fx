@@ -17,5 +17,5 @@ if __name__ == '__main__':
     client = MongoClient(mongouri)
 
     sched = BlockingScheduler()
-    sched.add_job(load_quotes, trigger='cron', args=[client], minute='*/5')
+    sched.add_job(load_quotes, trigger='cron', args=[client], minute='*/2')
     sched.start()
