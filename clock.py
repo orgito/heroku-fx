@@ -12,7 +12,7 @@ def load_quotes(mongo, apikey=None):
         oforge = OneForge(apikey)
     quotes = oforge.quotes(SYMBOLS)
     for quote in quotes:
-        del(quote['quota_used'])
+        quote.pop('quota_used', None)
     mongo.tubatrade.quotes.insert_many(quotes)
     print(f"Updated {len(quotes)} quotes")
 
