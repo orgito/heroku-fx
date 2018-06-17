@@ -11,6 +11,8 @@ def load_quotes(mongo, apikey=None):
     else:
         oforge = OneForge(apikey)
     quotes = oforge.quotes(SYMBOLS)
+    for quote in quotes:
+        del(quote['quota_used'])
     mongo.tubatrade.quotes.insert_many(quotes)
     print(f"Updated {len(quotes)} quotes")
 
