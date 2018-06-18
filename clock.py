@@ -14,7 +14,6 @@ def load_quotes(mongo, apikey=None):
     for quote in quotes:
         quote.pop('quota_used', None)
     mongo.tubatrade.quotes.insert_many(quotes)
-    print(f"Updated {len(quotes)} quotes")
 
 
 if __name__ == '__main__':
